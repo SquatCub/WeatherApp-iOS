@@ -35,11 +35,17 @@
                                                     <imageReference key="image" image="location.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="gpsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7A5-Ix-Rib"/>
+                                                </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ao6-i9-Mfj">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Busca una ciudad" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ao6-i9-Mfj">
                                                 <rect key="frame" x="60" y="0.0" width="245" height="34"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRy-Bm-fED">
                                                 <rect key="frame" x="315" y="0.0" width="50" height="34"/>
@@ -51,6 +57,9 @@
                                                 <state key="normal" title="Buscar">
                                                     <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="buscarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zDi-vv-4wf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -88,6 +97,12 @@
                             <constraint firstItem="GDe-Xw-RNn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="esh-oF-adN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ciudadLabel" destination="eag-tW-059" id="svf-qq-OMe"/>
+                        <outlet property="ciudadTextField" destination="ao6-i9-Mfj" id="ZZ0-XQ-uQd"/>
+                        <outlet property="climaImageView" destination="LLf-48-P2w" id="Ina-rX-9oO"/>
+                        <outlet property="temperaturaLabel" destination="oWE-Ld-6Lf" id="ngg-c2-JnG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
