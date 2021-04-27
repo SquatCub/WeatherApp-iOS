@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
+    var climaManager = ClimaManager()
+     
     // Barra de busqueda
     @IBOutlet weak var ciudadTextField: UITextField!
     
@@ -56,6 +58,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // Ya se termino de ingresar texto
     func textFieldDidEndEditing(_ textField: UITextField) {
+        climaManager.buscarClima(ciudad: ciudadTextField.text!)
+        
         ciudadLabel.text = ciudadTextField.text
         ciudadTextField.text = ""
     }
