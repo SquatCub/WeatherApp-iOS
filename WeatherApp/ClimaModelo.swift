@@ -11,6 +11,8 @@ struct ClimaModelo {
     let temp: Double
     let nombreCiudad: String
     let id: Int
+    let icon: String
+    let desc: String
     
     // Propiedades calculadas
     var tempString: String {

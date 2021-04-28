@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     @IBOutlet weak var climaImageView: UIImageView!
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
+    @IBOutlet weak var descripcionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +71,39 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
         DispatchQueue.main.async {
             self.temperaturaLabel.text = clima.tempString+"º C"
             self.ciudadLabel.text = clima.nombreCiudad
+            self.descripcionLabel.text = clima.desc.capitalizingFirstLetter()
+            let imgURL = "https://openweathermap.org/img/wn/\(clima.icon)@4x.png"
+            self.cargarImagen(urlString: imgURL)
         }
     }
     
+    //Imagenes del clima dinamicas
+    func cargarImagen(urlString: String) {
+            //1.- Obtener los datos
+            guard let url = URL(string: urlString) else {
+                return
+            }
+            let tareaObtenerDatos = URLSession.shared.dataTask(with: url) { (datos, _, error) in
+                guard let datosSeguros = datos, error == nil else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    //2.- Convertir los datos en imagen
+                    let imagen = UIImage(data: datosSeguros)
+                    //3.- Asignar la imagen a la imagen previamente creada
+                    self.climaImageView.image = imagen
+                }
+            }
+            tareaObtenerDatos.resume()
+    }
 }
 
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}

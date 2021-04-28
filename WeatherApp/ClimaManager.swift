@@ -59,11 +59,13 @@ struct ClimaManager {
             
             // Nos ayuda a saber que imagen colocar
             let id = datosDecodificados.weather[0].id
-            
+            let icon = datosDecodificados.weather[0].icon
             let ciudad = datosDecodificados.name
             let temp = datosDecodificados.main.temp
+            let desc = datosDecodificados.weather[0].description
             
-            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id)
+            // Modelo clima que contiene toda la informacion que sera usada en VC
+            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id, icon: icon, desc: desc)
             
             return objClima
             
