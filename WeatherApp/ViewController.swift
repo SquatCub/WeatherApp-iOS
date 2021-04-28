@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
     @IBOutlet weak var descripcionLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     // Recibo de datos desde el manager
     func actualizarClima(clima: ClimaModelo) {
         DispatchQueue.main.async {
+            self.errorLabel.text = ""
             self.temperaturaLabel.text = clima.tempString+"º C"
             self.ciudadLabel.text = clima.nombreCiudad
             self.descripcionLabel.text = clima.desc.capitalizingFirstLetter()
@@ -95,6 +97,13 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
                 }
             }
             tareaObtenerDatos.resume()
+    }
+    
+    // En caso de error
+    func errorClima() {
+        DispatchQueue.main.async {
+            self.errorLabel.text = "No se encontro la ciudad"
+        }
     }
 }
 

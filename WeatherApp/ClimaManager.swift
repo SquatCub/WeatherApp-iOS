@@ -9,6 +9,7 @@ import Foundation
 
 protocol ClimaManagerDelegado {
     func actualizarClima(clima: ClimaModelo)
+    func errorClima()
 }
 
 struct ClimaManager {
@@ -42,6 +43,8 @@ struct ClimaManager {
                         
                         //Designar un delegado
                         self.delegado?.actualizarClima(clima: objClima)
+                    } else {
+                        self.delegado?.errorClima()
                     }
                 }
             }
