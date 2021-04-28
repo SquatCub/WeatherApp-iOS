@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol ClimaManagerDelegado {
     func actualizarClima(clima: ClimaModelo)
@@ -17,9 +18,15 @@ struct ClimaManager {
     //Quien sea el delegado debera implementar este protocolo
     var delegado: ClimaManagerDelegado?
     
-    //Funcion padre, ejecuta la sentencia y llama a los demas metodos
+    //Para buscar por ciudad
     func buscarClima(ciudad: String) {
         let urlString = "\(climaURL)&q=\(ciudad)"
+        realizarSolicitud(urlString: urlString)
+    }
+    
+    //Para buscar por latitud, longitud
+    func buscarClimaGps(lat: CLLocationDegrees, lon: CLLocationDegrees) {
+        let urlString = "\(climaURL)&lat=\(lat)&lon=\(lon)"
         realizarSolicitud(urlString: urlString)
     }
     
@@ -66,9 +73,9 @@ struct ClimaManager {
             let ciudad = datosDecodificados.name
             let temp = datosDecodificados.main.temp
             let desc = datosDecodificados.weather[0].description
-            
+            let time = Array(icon)[2]
             // Modelo clima que contiene toda la informacion que sera usada en VC
-            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id, icon: icon, desc: desc)
+            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id, icon: icon, desc: desc, time: time)
             
             return objClima
             

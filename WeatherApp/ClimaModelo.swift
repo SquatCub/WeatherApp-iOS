@@ -13,6 +13,7 @@ struct ClimaModelo {
     let id: Int
     let icon: String
     let desc: String
+    let time: Character
     
     // Propiedades calculadas
     var tempString: String {

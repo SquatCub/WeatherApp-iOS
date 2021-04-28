@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegado {
+class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegado, CLLocationManagerDelegate {
 
     var climaManager = ClimaManager()
-     
+    // Ayuda a obtener las coordenadas del usuario
+    var climaLocationManager = CLLocationManager()
+    
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+    
     // Barra de busqueda
     @IBOutlet weak var ciudadTextField: UITextField!
     
@@ -23,8 +29,12 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
+        climaLocationManager.delegate = self
+        //Solicitar ubicacion al usuario
+        climaLocationManager.requestWhenInUseAuthorization()
+        //Obtener ubicacion en todo momento
+        climaLocationManager.requestLocation()
         //Establecer esta clase como el delegado del ClimaManager
         climaManager.delegado = self
         
@@ -32,6 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     }
     // Funcion para localizacion
     @IBAction func gpsButton(_ sender: Any) {
+        climaManager.buscarClimaGps(lat: latitude!, lon: longitude!)
     }
     // Funcion para buscar ciudad
     @IBAction func buscarButton(_ sender: Any) {
@@ -76,6 +87,11 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
             self.descripcionLabel.text = clima.desc.capitalizingFirstLetter()
             let imgURL = "https://openweathermap.org/img/wn/\(clima.icon)@4x.png"
             self.cargarImagen(urlString: imgURL)
+            if clima.time == "n" {
+                self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            } else {
+                self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            }
         }
     }
     
@@ -104,6 +120,20 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
         DispatchQueue.main.async {
             self.errorLabel.text = "No se encontro la ciudad"
         }
+    }
+    
+    // Metodos para la ubicacion
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let ubicacion = locations.last {
+            let latitude = ubicacion.coordinate.latitude
+            let longitude = ubicacion.coordinate.longitude
+            self.latitude = latitude
+            self.longitude = longitude
+            climaManager.buscarClimaGps(lat: latitude, lon: longitude)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+         print("Error al obtener ubicacion")
     }
 }
 
