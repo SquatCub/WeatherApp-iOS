@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC748B2F2639015800CEF60E /* ClimaModelo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC748B2E2639015800CEF60E /* ClimaModelo.swift */; };
 		ACB7F40F2637D80900FEDE67 /* ClimaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F40E2637D80900FEDE67 /* ClimaManager.swift */; };
 		ACB7F4122637E5B700FEDE67 /* ClimaDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7F4112637E5B700FEDE67 /* ClimaDatos.swift */; };
 		ACEA23022633F33B00F02098 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEA23012633F33B00F02098 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC748B2E2639015800CEF60E /* ClimaModelo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaModelo.swift; sourceTree = "<group>"; };
 		ACB7F40E2637D80900FEDE67 /* ClimaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaManager.swift; sourceTree = "<group>"; };
 		ACB7F4112637E5B700FEDE67 /* ClimaDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaDatos.swift; sourceTree = "<group>"; };
 		ACEA22FE2633F33B00F02098 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				ACEA230F2633F33D00F02098 /* Info.plist */,
 				ACB7F40E2637D80900FEDE67 /* ClimaManager.swift */,
 				ACB7F4112637E5B700FEDE67 /* ClimaDatos.swift */,
+				AC748B2E2639015800CEF60E /* ClimaModelo.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC748B2F2639015800CEF60E /* ClimaModelo.swift in Sources */,
 				ACEA23062633F33B00F02098 /* ViewController.swift in Sources */,
 				ACEA23022633F33B00F02098 /* AppDelegate.swift in Sources */,
 				ACB7F40F2637D80900FEDE67 /* ClimaManager.swift in Sources */,

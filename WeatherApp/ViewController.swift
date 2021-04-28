@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegado {
 
     var climaManager = ClimaManager()
      
@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        
+        //Establecer esta clase como el delegado del ClimaManager
+        climaManager.delegado = self
         
         ciudadTextField.delegate = self
     }
@@ -59,9 +62,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Ya se termino de ingresar texto
     func textFieldDidEndEditing(_ textField: UITextField) {
         climaManager.buscarClima(ciudad: ciudadTextField.text!)
-        
-        ciudadLabel.text = ciudadTextField.text
         ciudadTextField.text = ""
+    }
+    
+    // Recibo de datos desde el manager
+    func actualizarClima(clima: ClimaModelo) {
+        DispatchQueue.main.async {
+            self.temperaturaLabel.text = clima.tempString+"º C"
+            self.ciudadLabel.text = clima.nombreCiudad
+        }
     }
     
 }

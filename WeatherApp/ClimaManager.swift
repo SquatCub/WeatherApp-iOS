@@ -7,8 +7,14 @@
 
 import Foundation
 
+protocol ClimaManagerDelegado {
+    func actualizarClima(clima: ClimaModelo)
+}
+
 struct ClimaManager {
     let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=43c02b88939bc65afefdef7ff3b31822&units=metric&lang=es"
+    //Quien sea el delegado debera implementar este protocolo
+    var delegado: ClimaManagerDelegado?
     
     //Funcion padre, ejecuta la sentencia y llama a los demas metodos
     func buscarClima(ciudad: String) {
@@ -29,7 +35,14 @@ struct ClimaManager {
                     return
                 }
                 if let datosSeguros = datos {
-                    self.parsearJSON(datosClima: datosSeguros)
+                    if let objClima = self.parsearJSON(datosClima: datosSeguros) {
+                        // Mandar objeto al VC
+                        //let ClimaVC = ViewController()
+                        //ClimaVC.actualizarClima(objClima: objClima)
+                        
+                        //Designar un delegado
+                        self.delegado?.actualizarClima(clima: objClima)
+                    }
                 }
             }
             // 4. Iniciar la tarea
@@ -38,16 +51,25 @@ struct ClimaManager {
     }
     
     //Decodificador JSON
-    func parsearJSON(datosClima: Data) {
+    func parsearJSON(datosClima: Data) -> ClimaModelo? {
         let decodificador = JSONDecoder()
         
         do {
             let datosDecodificados = try decodificador.decode(ClimaDatos.self, from: datosClima)
-            print("La ciudad que elegiste es: \(datosDecodificados.name)")
-            print("La temperatura es: \(datosDecodificados.main.temp)")
-            print("La temperatura es: \(datosDecodificados.weather[0].description)")
+            
+            // Nos ayuda a saber que imagen colocar
+            let id = datosDecodificados.weather[0].id
+            
+            let ciudad = datosDecodificados.name
+            let temp = datosDecodificados.main.temp
+            
+            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id)
+            
+            return objClima
+            
         } catch {
                 print("Error al decodificar datos: \(error.localizedDescription)")
-            }
+            return nil
         }
+    }
 }
