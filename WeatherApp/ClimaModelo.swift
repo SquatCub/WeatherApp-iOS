@@ -14,10 +14,19 @@ struct ClimaModelo {
     let icon: String
     let desc: String
     let time: Character
+    let feels: Double
+    let humidity: Double
     
     // Propiedades calculadas
     var tempString: String {
         return String(format: "%.1f", temp)
+    }
+    
+    var feelString: String {
+        return String(format: "%.1f", feels)
+    }
+    var humidityString: String {
+        return String(format: "%.1f", humidity)
     }
     
     var condicionClima: String {

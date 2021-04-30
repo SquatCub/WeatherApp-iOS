@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
     @IBOutlet weak var climaImageView: UIImageView!
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
+    @IBOutlet weak var sensacionLabel: UILabel!
+    @IBOutlet weak var humedadLabel: UILabel!
     @IBOutlet weak var descripcionLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -84,11 +86,14 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
             self.errorLabel.text = ""
             self.temperaturaLabel.text = clima.tempString+"º C"
             self.ciudadLabel.text = clima.nombreCiudad
+            self.sensacionLabel.text = "Sensación térmica: "+clima.feelString
+            self.humedadLabel.text = "Humedad: "+clima.humidityString
             self.descripcionLabel.text = clima.desc.capitalizingFirstLetter()
             let imgURL = "https://openweathermap.org/img/wn/\(clima.icon)@4x.png"
             self.cargarImagen(urlString: imgURL)
             if clima.time == "n" {
                 self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                self.view.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             } else {
                 self.view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
             }
@@ -133,7 +138,13 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegad
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-         print("Error al obtener ubicacion")
+        self.errorLabel.text = "Ubicación no disponible, ingrese una ciudad"
+        self.temperaturaLabel.text = ""
+        self.ciudadLabel.text = ""
+        self.sensacionLabel.text = ""
+        self.humedadLabel.text = ""
+        self.descripcionLabel.text = ""
+        self.climaImageView.image = nil
     }
 }
 

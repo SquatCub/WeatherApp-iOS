@@ -43,7 +43,7 @@
                                                 <rect key="frame" x="60" y="0.0" width="245" height="34"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                             </textField>
@@ -80,32 +80,40 @@
                                             <constraint firstAttribute="height" constant="150" id="q1f-bg-Ffp"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Morelia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eag-tW-059">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ciudad" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eag-tW-059">
                                         <rect key="frame" x="0.0" y="294" width="365" height="51.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30ºC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-Ld-6Lf">
-                                        <rect key="frame" x="0.0" y="375.5" width="365" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlx-xr-Wa0">
-                                        <rect key="frame" x="0.0" y="453.5" width="365" height="50"/>
+                                        <rect key="frame" x="0.0" y="375.5" width="365" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ºC" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWE-Ld-6Lf">
+                                        <rect key="frame" x="0.0" y="455.5" width="365" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensación térmica: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDT-4f-UV9">
+                                        <rect key="frame" x="0.0" y="533.5" width="365" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humedad:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOj-YC-lGb">
+                                        <rect key="frame" x="0.0" y="584" width="365" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0X-vh-DgK">
-                                        <rect key="frame" x="0.0" y="533.5" width="365" height="123.5"/>
+                                        <rect key="frame" x="0.0" y="634.5" width="365" height="22.5"/>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="tfq-mA-B7f" firstAttribute="top" secondItem="bcc-im-5hB" secondAttribute="bottom" id="Ys2-tS-ynK"/>
-                                    <constraint firstItem="LLf-48-P2w" firstAttribute="top" secondItem="tfq-mA-B7f" secondAttribute="bottom" id="ncx-I0-1pw"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -123,6 +131,8 @@
                         <outlet property="climaImageView" destination="LLf-48-P2w" id="Ina-rX-9oO"/>
                         <outlet property="descripcionLabel" destination="hlx-xr-Wa0" id="zxw-Xn-zgf"/>
                         <outlet property="errorLabel" destination="tfq-mA-B7f" id="xX1-AV-0IQ"/>
+                        <outlet property="humedadLabel" destination="WOj-YC-lGb" id="DV7-w9-MZC"/>
+                        <outlet property="sensacionLabel" destination="VDT-4f-UV9" id="kvy-Mb-xRG"/>
                         <outlet property="temperaturaLabel" destination="oWE-Ld-6Lf" id="ngg-c2-JnG"/>
                     </connections>
                 </viewController>

@@ -74,8 +74,12 @@ struct ClimaManager {
             let temp = datosDecodificados.main.temp
             let desc = datosDecodificados.weather[0].description
             let time = Array(icon)[2]
+            
+            let feels = datosDecodificados.main.feels_like
+            let humidity = datosDecodificados.main.humidity
+            
             // Modelo clima que contiene toda la informacion que sera usada en VC
-            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id, icon: icon, desc: desc, time: time)
+            let objClima = ClimaModelo(temp: temp, nombreCiudad: ciudad, id: id, icon: icon, desc: desc, time: time, feels: feels, humidity: humidity)
             
             return objClima
             
