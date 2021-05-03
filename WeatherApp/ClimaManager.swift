@@ -14,7 +14,7 @@ protocol ClimaManagerDelegado {
 }
 
 struct ClimaManager {
-    let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=43c02b88939bc65afefdef7ff3b31822&units=metric&lang=es"
+    let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=76deb8d9c821504200426f99196a94ed&units=metric&lang=es"
     //Quien sea el delegado debera implementar este protocolo
     var delegado: ClimaManagerDelegado?
     
